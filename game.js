@@ -488,10 +488,10 @@ function spawnTraffic() {
         speed: (180 + Math.random() * 100) * difficulty,
 
         // Decide which cars can change lanes.
-        canChangeLane: Math.random() < 0.45,
+        canChangeLane: Math.random() < 0.65,
 
         // Lane-change system.
-        laneChangeTimer: 0.3 + Math.random() * 0.7,
+        laneChangeTimer: 0.03 + Math.random() * 0.15,
         indicatorTimer: 0,
         indicatorSide: 0,
         changingLane: false,
@@ -630,7 +630,7 @@ if (!car.canChangeLane) {
                 car.lane = car.targetLane;
                 car.changingLane = false;
                 car.indicatorSide = 0;
-                car.laneChangeTimer = 0.3 + Math.random() * 0.7;
+                car.laneChangeTimer = 0.5 + Math.random() * 0.5;
             } else {
                 car.x += Math.sign(difference) * moveAmount;
             }
