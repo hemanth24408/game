@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highway Moto Rush</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="game-container">
+
+        <header class="game-header">
+            <div>
+                <p class="eyebrow">ARCADE MOTORCYCLE GAME</p>
+                <h1>HIGHWAY <span>MOTO RUSH</span></h1>
+            </div>
+
+            <div class="stats">
+                <div class="stat-box">
+                    <span>SCORE</span>
+                    <strong id="score">0</strong>
+                </div>
+
+                <div class="speed-box">
+                    <span>SPEED</span>
+                    <strong id="speed">80</strong>
+                    <small>KM/H</small>
+                </div>
+            </div>
+        </header>
+
+        <section class="game-area">
+            <div id="startScreen" class="start-screen">
+    <p class="eyebrow">WELCOME TO THE HIGHWAY</p>
+
+    <h2>HIGHWAY <span>MOTO RUSH</span></h2>
+
+    <p class="start-description">
+        Ride fast, dodge traffic and push your limits!
+    </p>
+
+    <div class="start-best-score">
+        BEST SCORE: <span id="startBestScore">0</span>
+    </div>
+
+    <button id="startButton">START GAME ▶</button>
+
+    <div class="start-instructions">
+        <p>← → or A / D : MOVE</p>
+        <p>SPACE : NITRO BOOST</p>
+        <p>AVOID TRAFFIC AND SURVIVE!</p>
+    </div>
+</div>
+<div id="pauseScreen" class="pause-screen hidden">
+    <p class="eyebrow">TAKE A BREAK</p>
+    <h2>GAME PAUSED</h2>
+    <p>Press P to resume your ride</p>
+</div>
+            <canvas id="gameCanvas">
+                Your browser does not support Canvas.
+            </canvas>
+
+            <div class="game-label">STAGE 04 · HIGHWAY</div>
+
+            <div class="nitro-panel">
+                <div class="nitro-heading">
+                    <span>⚡ NITRO</span>
+                    <span id="nitroPercent">100%</span>
+                </div>
+
+                <div class="nitro-track">
+                    <div id="nitroFill" class="nitro-fill"></div>
+                </div>
+
+                <div id="nitroMessage" class="nitro-message">
+                    HOLD SPACE TO BOOST
+                </div>
+            </div>
+
+            <div id="gameOverScreen" class="game-over hidden">
+                <p class="eyebrow">RIDE ENDED</p>
+                <h2>CRASHED!</h2>
+
+                <p class="result-label">YOUR SCORE</p>
+                <div id="finalScore" class="final-score">0</div>
+
+                <div class="best-score">
+                    BEST SCORE: <span id="bestScore">0</span>
+                </div>
+
+                <button id="restartButton">RIDE AGAIN ↻</button>
+
+                <p class="restart-hint">
+                    Press ENTER to restart
+                </p>
+            </div>
+        </section>
+
+        <section class="controls">
+            <div>
+                <strong>HOW TO PLAY</strong>
+                <p>Steer with ← → or A / D. Hold SPACE for nitro. Avoid traffic and earn near-miss bonuses!</p>
+            </div>
+
+            <div class="key-guide">
+                <kbd>←</kbd>
+                <kbd>→</kbd>
+                <kbd>␣</kbd>
+            </div>
+        </section>
+
+        <footer>
+            <span>HIGHWAY MOTO RUSH</span>
+            <span>RIDE FAST. STAY ALIVE.</span>
+        </footer>
+
+    </main>
+
+    <script src="game.js"></script>
+</body>
+</html>
