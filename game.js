@@ -662,11 +662,12 @@ function rectanglesOverlap(a, b) {
 }
 
 function checkCollisions() {
+    // Use the actual visual position of the motorcycle.
     const bikeBox = {
         x: bike.x,
-        y: bike.y,
+        y: bike.y - bikeLift,
         width: bike.width * 0.65,
-        height: bike.height * 0.85
+        height: bike.height * 0.65
     };
 
     for (const car of traffic) {
