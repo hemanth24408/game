@@ -509,23 +509,28 @@ function updateNitro(deltaTime) {
     const wasBoosting = boosting;
     const wantsBoost = keys.nitro && nitro > 0 && !gameOver;
 
+    // Different Nitro consumption and recharge rates.
+    const nitroDrainRate = 25;
+    const nitroRechargeRate = 12;
+
     if (wantsBoost) {
-        nitro -= 35 * deltaTime;
+        nitro -= nitroDrainRate * deltaTime;
     } else {
-        nitro += 18 * deltaTime;
+        nitro += nitroRechargeRate * deltaTime;
     }
 
     nitro = Math.max(0, Math.min(100, nitro));
 
-    // Check the fuel again after draining it.
-    // This stops the animation immediately when fuel runs out.
+    // Stop boosting immediately when Nitro reaches zero.
     boosting = keys.nitro && nitro > 0 && !gameOver;
 
     nitroFill.style.width = nitro + "%";
     nitroPercent.textContent = Math.round(nitro) + "%";
+
     if (boosting && !wasBoosting) {
-    playNitroSound();
-}
+        playNitroSound();
+    }
+
     if (boosting) {
         nitroPanel.classList.add("boosting");
         nitroMessage.textContent = "BOOST ACTIVE!";
@@ -551,13 +556,15 @@ function updateNitro(deltaTime) {
 
 
 function updateTraffic(deltaTime) {
-    const targetLift = boosting ? bike.y - height * 0.2 : 0;
-const liftSpeed = 120;
+// Move the bike upward during Nitro and downward when Nitro stops.
+// Bike movement during and after Nitro.
+if (boosting) {
+    bikeLift += 180 * deltaTime;
 
-if (bikeLift < targetLift) {
-    bikeLift = Math.min(targetLift, bikeLift + liftSpeed * deltaTime);
-} else if (bikeLift > targetLift) {
-    bikeLift = Math.max(targetLift, bikeLift - liftSpeed * deltaTime);
+    const maxLift = bike.y - height * 0.2;
+    bikeLift = Math.min(bikeLift, maxLift);
+} else {
+    bikeLift = Math.max(0, bikeLift - 300 * deltaTime);
 }
     spawnTimer += deltaTime;
 
